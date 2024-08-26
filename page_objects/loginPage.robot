@@ -13,7 +13,9 @@ ${CADASTRAR_CONTA_BUTTON_XPATH}    xpath=//button[.//span[text()='Cadastrar cont
 ${EMAIL}    css=input[name='email']
 ${CADASTRAR_CONTA_BUTTON_CSS}    xpath=//button[span[text()='cadastrar conta']]
 ${CHECKBOX_TERMS_XPATH}    xpath=//input[@name='accepteterms']
-
+${ENTRAR_CONTA_BUTTON_XPATH}    xpath=//button[.//span[text()='Entrar']]
+${CAMPO_OBRIGATORIO_MSG}    Este campo é obrigatório
+${DADO_VALIDO}      Informe um dado válido
 
 *** Keywords ***
 Campos Login Deveriam Estar Visiveis
@@ -36,7 +38,6 @@ Campos Cadastro Deveriam Estar Visiveis
     Element Should Be Visible    ${CELULAR_FIELD_CSS}
 
     
-    
 Preencher Campos De Cadastro
     [Arguments]    ${nome}    ${sobrenome}    ${email}    ${senha}    ${cpf}    ${celular}
     Input Text    ${NAME_FIELD_CSS}    ${nome}
@@ -47,3 +48,15 @@ Preencher Campos De Cadastro
     Input Text    ${CPF_FIELD_CSS}    ${cpf}
     Input Text    ${CELULAR_FIELD_CSS}    ${celular}
     Click Element    ${CADASTRAR_CONTA_BUTTON_CSS}
+
+Preencher Campos De Login
+    [Arguments]    ${EMAIL}       ${SENHA}
+    Input Text       ${EMAIL_FIELD_CSS}     ${EMAIL}      
+    Input Text      ${PASSWORD_FIELD_CSS}       ${SENHA}               
+    Click Element       ${ENTRAR_CONTA_BUTTON_XPATH}
+
+Deve Mostrar Mensagem De Erro
+    Page Should Contain    ${CAMPO_OBRIGATORIO_MSG}
+
+Deve Solicitar Dados Validos
+    Page Should Contain     ${DADO_VALIDO}
