@@ -26,5 +26,27 @@
 
 4. Execute no console:
 
-   ```bash
-   pip install -r requirements.txt
+    -   ```bash
+        pip install -r requirements.txt
+        ```
+
+## Execução dos Testes:
+
+    
+- **Todos**:
+    
+    ```bash
+    robot features/*
+    ```
+
+
+- **Execução por Cenário**:
+
+
+    ```bash
+     robot features/{NOME_DA_FEATURE.feature}
+    ```
+
+## Report
+
+Após executar os testes, será gerado um arquivo report.html que mostrará os resultados.
